@@ -1,0 +1,5 @@
+export default{
+    URL:'http://192.168.1.147:8099',
+    MALL_MEMBER_TOKEN_KEY:'MALL_MEMBER_TOKEN_KEY'
+
+}
