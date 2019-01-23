@@ -1,5 +1,6 @@
 const state = {
-    index:0
+  navIndex:0,
+    showBottomNav:true
    
   }
   const getters = {
@@ -12,8 +13,11 @@ const state = {
   const mutations = {
     changeIndex(state,data) {
         console.log(data)
-      state.index = data
+      state.navIndex = data
     },
+    changeBottomNav(state,data){
+      state.showBottomNav = data
+    }
   
   
   
