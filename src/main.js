@@ -14,10 +14,14 @@ import './assets/css/api.css'
 import './assets/css/aui-flex.css'
 import './assets/css/aui.css'
 import './assets/css/base.css'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
 
 
 Vue.config.productionTip = false
 Vue.use(vuex)
+Vue.use(ElementUI)
+
 let store = new vuex.Store(stores)
 Vue.prototype.httpServer = httpServer;
 Vue.prototype.api = api;

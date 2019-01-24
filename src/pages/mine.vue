@@ -1,10 +1,10 @@
 <template>
-  <div id="home-box" v-cloak class="frame">
+  <div v-cloak class="frame">
      
     <div class="aui-flex-col aui-flex-left aui-flex-middle second-line">
       <div
         class="avatar-msg aui-flex-left aui-flex-col aui-flex-middle aui-flex-item-12"
-        v-if="userId !== undefined"
+        v-if="userId !== undefined&&userId !==''"
       >
         <div class="aui-flex-left aui-flex-item-9 aui-flex-col aui-flex-middle">
           <img :src="host+userMsg.img" alt class="avatar" @click="checkAvatar">
@@ -14,9 +14,9 @@
             <span class="role">{{userMsg.roleName}}</span>
           </div>
         </div>
-        <div class="aui-flex-item-3 edit-msg" @click="editMsg">编辑资料</div>
+        <div class="aui-flex-item-3 edit-msg" @click="editMsg" >编辑资料</div>
       </div>
-      <span class="login-btn" v-else tapmode onclick="checklogin();">去登录</span>
+      <span class="login-btn"  @click="checklogin" v-else>去登录</span>
 
       <!-- <div class="aui-flex-right aui-flex-item-4">
                 <span class="code">综合评分：5.0</span>
@@ -165,7 +165,7 @@ export default {
       userMsg: [],
       isBoss: 0,
       stallUser: 0,
-      userId:52
+      userId:''
     };
   },
   created() {
@@ -174,6 +174,10 @@ export default {
   },
   computed: {},
   methods: {
+    checklogin:function(){
+       this.$router.push('/login')
+
+    },
     editMsg: function() {
       var that = this;
       api.openWin({

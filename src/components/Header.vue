@@ -60,24 +60,11 @@ export default {
   methods: {
     // 搜索
     goSearch: function() {
-      api.openWin({
-        name: "search_win",
-        url: "./home/search_win.html",
-        reload: true,
-        pageParam: {
-          height: api.winHeight
-        }
-      });
+   this.$router.push('/search')
     },
     randomSwitchBtn: function(tag) {
       if (tag == vuedata.index) return;
       vuedata.index = tag;
-      // alert(vuedata.index)
-      // api.execScript({
-      //     frameName: 'home_frame' + tag,
-      //     script: 'location.reload();'
-      // });
-      // $api.addCls(footItem[tag], 'aui-active');
       api.setFrameGroupIndex({
         name: "group",
         index: vuedata.index,
@@ -85,19 +72,16 @@ export default {
       });
     },
     goSetting: function() {
-      if (typeof vuedata.userId == "undefined") {
-        api.toast({
-          msg: "您还未登录",
-          duration: 2000,
-          location: "middle"
-        });
-      } else {
-        api.openWin({
-          name: "setting_win",
-          url: "./setting_win.html",
-          reload: true
-        });
-      }
+      this.$router.push('/setting')
+      // if (typeof vuedata.userId == "undefined") {
+      //   api.toast({
+      //     msg: "您还未登录",
+      //     duration: 2000,
+      //     location: "middle"
+      //   });
+      // } else {
+      //  this.$route.push('/setting')
+      // }
     },
     clearAll: function() {
       api.execScript({

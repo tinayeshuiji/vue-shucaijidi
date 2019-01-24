@@ -13,6 +13,8 @@ const api = {
   getRefundList:`/api/refund/getRefundList`,
   getCollectionList:`/api/Collection/getCollectionList`,
   getOrderListByUserId:`/api/order/getOrderListByUserId`,
+  checkMobile:`/api/user/checkMobile`,
+  login:`/api/user/login`,
 
 
 }
