@@ -62,7 +62,7 @@ export default {
       h: 0,
       pointNone: false,
       ajpush: "",
-      registionId: ""
+      registionId: "123"
     };
   },
   created() {

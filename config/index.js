@@ -12,10 +12,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': { //替换代理地址名称
-        target: 'http://192.168.1.147:8099', //代理地址
+        target: 'https://ab.fjjxsw.cn', //代理地址
        changeOrigin: true, //可否跨域
        pathRewrite: {
-       '^/api': 'http://192.168.1.147:8099' //重写接口，去掉/api
+       '^/api': 'https://ab.fjjxsw.cn' //重写接口，去掉/api
       }
   }
     },
