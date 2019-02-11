@@ -1,11 +1,6 @@
 <template>
   <div id="home-box" v-cloak class="frame">
-    <header class="aui-bar aui-bar-nav" id="header">
-      <a class="aui-pull-left aui-btn" tapmode @click="closewin">
-        <span class="aui-iconfont aui-icon-left"></span>
-      </a>
-      <div class="aui-title">关于我们</div>
-    </header>
+  
     <div class="rich-txt" id="rich-txt" v-html="content"></div>
     <div class="copy-right" id="copy">Copyright &copy; 2011-2018
       <br>优野商城版权所有

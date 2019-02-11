@@ -1,11 +1,8 @@
 <template>
   <div id="app">
-   <Header v-if="$store.state.showBottomNav"></Header>
-    <div>
-      <router-view/>
-    </div>
-    <Footer v-if="$store.state.showBottomNav"></Footer>
-    
+    <Header></Header>
+    <router-view/>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -13,36 +10,26 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 export default {
-  name: 'App',
-  components:{
+  name: "App",
+  components: {
     Footer,
     Header
   },
-  data(){
-    return{
-      navIndex:''
-    }
-  },
-    watch: {
-    $route() {
-      // 获取当前路径
-      let path = this.$route.path;
-      // 检索当前路径
-      console.log(path)
-      if(path=='/home'||path=='/cat'||path=='/cart'||path=='/mine'){
-         this.$store.commit('changeBottomNav', true)
-      }else{
-         this.$store.commit('changeBottomNav', false)
-      }
-      
-    }
-  
+  data() {
+    return {
+      navIndex: ""
+    };
   }
-}
+  
+};
 </script>
 
 <style>
+html,
+body,
 #app {
+  width: 100%;
+  height: 100%;
   /* font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

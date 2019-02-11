@@ -26,62 +26,62 @@ export default new Router({
   routes: [
     {
       path: '/home',
-      name: 'Home',
+      name: '首页',
       component: Home
     },
     {
       path: '/cat',
-      name: 'Cat',
+      name: '分类',
       component: Cat
     },
     {
       path: '/cart',
-      name: 'Cart',
+      name: '购物车',
       component: Cart
     },
     {
       path: '/mine',
-      name: 'Mine',
+      name: '我的',
       component: Mine
     },
     {
       path: '/about',
-      name: 'About',
+      name: '关于我们',
       component: About
     },
     {
       path: '/message',
-      name: 'Message',
+      name: '我的通知',
       component: Message
     },
     {
       path: '/reject',
-      name: 'Reject',
+      name: '我的退货',
       component: Reject
     },
     {
       path: '/collect',
-      name: 'Collect',
+      name: '我的收藏',
       component: Collect
     },
     {
       path: '/order',
-      name: 'Order',
+      name: '我的订单',
       component: Order
     },
     {
       path: '/mouths',
-      name: 'Mouths',
+      name: '我的档口',
       component: Mouths
     },
     {
       path: '/login',
-      name: 'Login',
+      name: '登录',
       component: Login
     },
     {
       path: '/register',
-      name: 'Register',
+      name: '注册',
       component: Register
     },
     {

@@ -1,5 +1,5 @@
 <template>
-  <ul class="aui-bar aui-bar-tab footer">
+  <ul class="aui-bar aui-bar-tab footer" v-if="showBottomNav">
     <li
       class="aui-bar-tab-item"
       :class="navIndex==0?'aui-active':''"
@@ -40,11 +40,44 @@ export default {
   name: "Footer",
   data: function() {
     return {
-      navIndex: this.$store.state.navIndex
+      navIndex: this.$store.state.navIndex,
+     
     };
   },
   created() {
 
+  },
+   computed:{
+    showBottomNav(){
+      return this.$store.state.showBottomNav
+    }
+  },
+  watch: {
+    $route(to, from) {
+      // 获取当前路径
+      console.log(to);
+      console.log(from);
+      let path = to.path;
+      // 检索当前路径
+      console.log(path);
+      if (path == "/home") {
+        this.$store.commit("changeBottomNav", true);
+        
+      } else if (path == "/cat") {
+    
+        this.$store.commit("changeBottomNav", true);
+      } else if (path == "/cart") {
+       
+      this.$store.commit("changeBottomNav", true);
+      } else if (path == "/mine") {
+        this.$store.commit("changeBottomNav", true);
+      } else {
+       
+       this.$store.commit("changeBottomNav", fasle);
+      }
+      
+    },
+   
   },
   methods: {
     randomSwitchBtn: function(index, path) {
@@ -52,7 +85,7 @@ export default {
       let t = this;
       t.navIndex = index;
       t.$router.push(path);
-      this.$store.commit('changeIndex',t.navIndex)
+      // this.$store.commit('changeIndex',t.navIndex)
     },
     checkRouterLocal(path) {
     
@@ -75,7 +108,7 @@ export default {
       // 获取当前路径
       let path = this.$route.path;
       // 检索当前路径
-      this.checkRouterLocal(path);
+      // this.checkRouterLocal(path);
     }
   }
 };

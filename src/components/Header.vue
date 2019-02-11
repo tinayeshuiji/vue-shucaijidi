@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="showHeaderNav">
     <header class="aui-bar aui-bar-nav" v-if="navIndex==0||navIndex==1">
       <div
         class="header-box aui-flex-col aui-flex-middle aui-flex-between"
@@ -33,6 +33,12 @@
         <div class="setting-box" @click="goSetting"></div>
       </div>
     </header>
+    <header class="aui-bar aui-bar-nav" id="header" v-if="navIndex==-1">
+      <a class="aui-pull-left aui-btn" tapmode @click="closewin">
+        <span class="aui-iconfont aui-icon-left"></span>
+      </a>
+      <div class="aui-title">{{title}}</div>
+    </header>
   </div>
 </template>
 <script>
@@ -44,44 +50,64 @@ export default {
       host: "",
       index: 0,
       userId: 52,
-      
+      title: ""
     };
+  },
+  computed: {
+    showHeaderNav() {
+      return this.$store.state.showHeaderNav;
+    },
+    navIndex() {
+      return this.$store.state.navIndex;
+    }
+  },
+  watch: {
+    $route(to, from) {
+      // 获取当前路径
+      console.log(to);
+      console.log(from);
+      let path = to.path;
+      // 检索当前路径
+      console.log(path);
+      if (path == "/home") {
+        
+        this.$store.commit("changeIndex", 0);
+      } else if (path == "/cat") {
+    
+        this.$store.commit("changeIndex", 1);
+      } else if (path == "/cart") {
+       
+        this.$store.commit("changeIndex", 2);
+      } else if (path == "/mine") {
+        this.$store.commit("changeBottomNav", true);
+        this.$store.commit("changeIndex", 3);
+      } else {
+       
+        this.$store.commit("changeIndex", -1);
+        this.title = to.name;
+      }
+      this.$store.commit("changeHeaderNav", true);
+    },
+    navIndex: function(newValue) {
+      console.log(newValue);
+    }
   },
   created() {
     this.host = this.Global.URL;
-  
-   
+    console.log(this.$store.state.navIndex);
   },
-  computed: {
-     navIndex () {
-        return this.$store.state.navIndex
-    } 
-  },
+
   methods: {
+    closewin: function() {
+      this.$router.go(-1);
+    },
     // 搜索
     goSearch: function() {
-   this.$router.push('/search')
+      this.$router.push("/search");
     },
-    randomSwitchBtn: function(tag) {
-      if (tag == vuedata.index) return;
-      vuedata.index = tag;
-      api.setFrameGroupIndex({
-        name: "group",
-        index: vuedata.index,
-        reload: true
-      });
-    },
+
     goSetting: function() {
-      this.$router.push('/setting')
-      // if (typeof vuedata.userId == "undefined") {
-      //   api.toast({
-      //     msg: "您还未登录",
-      //     duration: 2000,
-      //     location: "middle"
-      //   });
-      // } else {
-      //  this.$route.push('/setting')
-      // }
+      this.$router.push("/setting");
     },
     clearAll: function() {
       api.execScript({
@@ -90,18 +116,7 @@ export default {
         script: "clearCart();"
       });
     }
-  },
-  
-  watch: {
-    navIndex:function(newValue){
-      console.log(newValue)
-   
-     
-     
-    }
   }
-
-
 };
 </script>
 <style scoped>
@@ -113,7 +128,6 @@ body {
   padding: 0 0.5rem;
   height: 2.2rem;
   width: 100%;
-
 }
 .search-box0 {
   width: 90%;
@@ -135,7 +149,7 @@ body {
   margin: 0 auto;
 }
 
- .input-box {
+.input-box {
   width: 80%;
   height: 1.25rem;
   line-height: 1.25rem;
@@ -150,8 +164,6 @@ header {
   display: flex;
   justify-content: space-between;
 }
-
-
 
 .aui-bar-nav {
   background-color: #44ca68;

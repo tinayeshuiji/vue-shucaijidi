@@ -1,6 +1,7 @@
 const state = {
   navIndex:0,
-    showBottomNav:true
+    showBottomNav:true,
+    showHeaderNav:true,
    
   }
   const getters = {
@@ -17,6 +18,9 @@ const state = {
     },
     changeBottomNav(state,data){
       state.showBottomNav = data
+    },
+    changeHeaderNav(state,data){
+      state.showHeaderNav = data
     }
   
   

@@ -1,13 +1,6 @@
 <template>
   <div id="home-box" v-cloak class="frame">
-    <header class="aui-bar aui-bar-nav" id="header">
-      <a class="aui-pull-left aui-btn" @click="closewin">
-        <span class="aui-iconfont aui-icon-left"></span>
-      </a>
-      <div class="aui-title">我的通知</div>
-      <div class="amend" @click="mangeMsg" v-if="deleteShow==false && msgList.length!==0">管理</div>
-      <div class="amend" @click="deleteMsg" v-if="deleteShow==true && msgList.length!==0">删除</div>
-    </header>
+
     <div class="message-list">
       <div
         class="message-item aui-flex-col aui-flex-left aui-flex-middle"

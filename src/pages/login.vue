@@ -1,10 +1,5 @@
 <template>
   <div class="login-container" id="login-box" v-cloak>
-    <header class="aui-bar aui-bar-nav" id="header">
-      <a class="aui-pull-left aui-btn" @click="closewin">
-        <span class="aui-iconfont aui-icon-left"></span>
-      </a>
-    </header>
     <div class="aui-flex-row aui-flex-between aui-flex-center container">
       <img src="../assets/image/icon/icon19.png" alt class="login1">
       <ul class="login-list">
@@ -70,9 +65,7 @@ export default {
   },
   computed: {},
   methods: {
-    closewin: function() {
-      this.$router.go(-1);
-    },
+   
     // 注册账号
     openRegisterWin: function() {
       this.$router.push("/register");
