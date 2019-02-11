@@ -1,9 +1,20 @@
 <template>
   <div>
     <div v-cloak>
-      <div id="aui-slide">
-        <div class="aui-slide-wrap" id="banner"></div>
-        <div class="aui-slide-page-wrap" id="dot"></div>
+      <!-- <Banner :banner="bannerList"></Banner>   -->
+      <div style="width:100%;height:200px">
+        <!-- 配置slider组件 -->
+        <slider
+          :pages="bannerList"
+          :sliderinit="sliderinit"
+          @slide="slide"
+          @tap="onTap"
+          @init="onInit"
+        >
+          <!-- 设置loading,可自定义 -->
+          <img :src="host+item.img" alt="" v-for="(item,index) in bannerList" :key="index">
+          <!-- <div slot="loading">loading...</div> -->
+        </slider>
       </div>
       <div class="notice-list" id="notice-list">
         <div
@@ -160,15 +171,17 @@
         </div>
       </div>
     </div>
-    
   </div>
 </template>
 <script>
+import slider from "vue-concise-slider";
+import Banner from "../components/banner";
 
 export default {
   name: "Home",
   components: {
-    
+    slider,
+    Banner
   },
   data() {
     return {
@@ -184,7 +197,19 @@ export default {
       host: "",
       headerH: 0,
       NoticeList: [],
-      totalNum: ""
+      totalNum: "",
+      sliderinit: {
+        currentPage: 0,
+        thresholdDistance: 500,
+        thresholdTime: 100,
+        autoplay: 1000,
+        loop: true,
+        direction: "vertical",
+        infinite: 1,
+        slidesToScroll: 1,
+        timingFunction: "ease",
+        duration: 300
+      }
     };
   },
   created() {
@@ -193,9 +218,19 @@ export default {
     this.getHotList();
     this.getRecommandList();
     this.getLoveList();
+    this.getBanner();
   },
   computed: {},
   methods: {
+    slide(data) {
+      console.log(data);
+    },
+    onTap(data) {
+      console.log(data);
+    },
+    onInit(data) {
+      console.log(data);
+    },
     // 获取热门列表内容
     getHotList: function() {
       var that = this;
@@ -247,6 +282,17 @@ export default {
             that.loveList = [];
           }
         });
+    },
+    getBanner: function() {
+      var that = this;
+      that.axios.post("/api" + that.api.getSowingList, {}).then(res => {
+        console.log(res);
+        if (res.data.code == 0) {
+          that.bannerList = res.data.data;
+        } else if (res.data.code == 400) {
+          that.bannerList = [];
+        }
+      });
     }
   }
 };

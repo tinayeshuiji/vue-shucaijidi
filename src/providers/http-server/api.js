@@ -15,6 +15,7 @@ const api = {
   getOrderListByUserId:`/api/order/getOrderListByUserId`,
   checkMobile:`/api/user/checkMobile`,
   login:`/api/user/login`,
+  getSowingList:`/api/api/getSowingList`,
 
 
 }
