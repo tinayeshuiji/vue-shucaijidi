@@ -1,11 +1,11 @@
 <template>
   <div class="frame" id="register-box">
-    <header class="aui-bar aui-bar-nav" id="header">
+    <!-- <header class="aui-bar aui-bar-nav" id="header">
       <a class="aui-pull-left aui-btn" @click="closewin();">
         <span class="aui-iconfont aui-icon-left"></span>
       </a>
       <div class="aui-title">立即注册</div>
-    </header>
+    </header> -->
     <div class="phone-box">
       <label class="line aui-flex-col aui-flex-left aui-flex-middle" for="phone">
         <span class="aui-flex-item-2">+86</span>
@@ -78,6 +78,8 @@ export default {
 </script>
 <style scoped>
 .frame {
+  width:100%;
+  height: 100%;
   background-color: #fff;
 }
 

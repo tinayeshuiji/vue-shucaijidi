@@ -38,9 +38,7 @@ export default {
   },
   computed: {},
   methods: {
-    closewin: function() {
-      this.$router.go(-1);
-    }
+   
   }
 };
 </script>

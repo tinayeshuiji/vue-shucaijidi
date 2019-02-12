@@ -16,6 +16,12 @@ const api = {
   checkMobile:`/api/user/checkMobile`,
   login:`/api/user/login`,
   getSowingList:`/api/api/getSowingList`,
+  getWordList:`/api/api/getWordList`,
+  getNoticeList:`/api/api/getNoticeList`,
+  getSearchGoodsList:`/api/goods/getSearchGoodsList`,
+  addCarts:`/api/Cart/addCarts`,
+  getGoodInfo:`/api/goods/getGoodInfo`,
+  Collected:`/api/Collection/Collected`,
 
 
 }

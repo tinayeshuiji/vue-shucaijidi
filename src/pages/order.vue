@@ -1,11 +1,11 @@
 <template>
   <div class="frame">
-    <header class="aui-bar aui-bar-nav" id="header">
+    <!-- <header class="aui-bar aui-bar-nav" id="header">
       <a class="aui-pull-left aui-btn" @click="closewin();">
         <span class="aui-iconfont aui-icon-left"></span>
       </a>
       <div class="aui-title">我的订单</div>
-    </header>
+    </header> -->
     <div class="today-list aui-flex-col aui-flex-middle aui-flex-center" id="order-list">
       <div
         v-for="(item,index) in tab"

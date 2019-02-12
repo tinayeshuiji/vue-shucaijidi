@@ -52,33 +52,33 @@ export default {
       return this.$store.state.showBottomNav
     }
   },
-  watch: {
-    $route(to, from) {
-      // 获取当前路径
-      console.log(to);
-      console.log(from);
-      let path = to.path;
-      // 检索当前路径
-      console.log(path);
-      if (path == "/home") {
-        this.$store.commit("changeBottomNav", true);
+  // watch: {
+  //   $route(to, from) {
+  //     // 获取当前路径
+  //     console.log(to);
+  //     console.log(from);
+  //     let path = to.path;
+  //     // 检索当前路径
+  //     console.log(path);
+  //     if (path == "/home") {
+  //       this.$store.commit("changeBottomNav", true);
         
-      } else if (path == "/cat") {
+  //     } else if (path == "/cat") {
     
-        this.$store.commit("changeBottomNav", true);
-      } else if (path == "/cart") {
+  //       this.$store.commit("changeBottomNav", true);
+  //     } else if (path == "/cart") {
        
-      this.$store.commit("changeBottomNav", true);
-      } else if (path == "/mine") {
-        this.$store.commit("changeBottomNav", true);
-      } else {
+  //     this.$store.commit("changeBottomNav", true);
+  //     } else if (path == "/mine") {
+  //       this.$store.commit("changeBottomNav", true);
+  //     } else {
        
-       this.$store.commit("changeBottomNav", fasle);
-      }
+  //      this.$store.commit("changeBottomNav", fasle);
+  //     }
       
-    },
+  //   },
    
-  },
+  // },
   methods: {
     randomSwitchBtn: function(index, path) {
       console.log(index, path);

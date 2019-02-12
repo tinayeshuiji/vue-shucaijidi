@@ -4,16 +4,23 @@
       <!-- <Banner :banner="bannerList"></Banner>   -->
       <div style="width:100%;height:200px">
         <!-- 配置slider组件 -->
-        <slider
-          :pages="bannerList"
+        <!-- <slider
+          :pages="pages"
           :sliderinit="sliderinit"
           @slide="slide"
           @tap="onTap"
           @init="onInit"
         >
+        </slider>-->
+        <slider ref="slider" :options="options" @slide="slide" @tap="onTap" @init="onInit">
+          <!-- 直接使用slideritem slot -->
+          <slideritem
+            v-for="(item,index) in someList"
+            :key="index"
+            :style="item.style"
+          >{{item.html}}</slideritem>
           <!-- 设置loading,可自定义 -->
-          <img :src="host+item.img" alt="" v-for="(item,index) in bannerList" :key="index">
-          <!-- <div slot="loading">loading...</div> -->
+          <div slot="loading">loading...</div>
         </slider>
       </div>
       <div class="notice-list" id="notice-list">
@@ -174,13 +181,15 @@
   </div>
 </template>
 <script>
-import slider from "vue-concise-slider";
+import { slider, slideritem } from "vue-concise-slider";
 import Banner from "../components/banner";
+
 
 export default {
   name: "Home",
   components: {
     slider,
+    slideritem,
     Banner
   },
   data() {
@@ -189,6 +198,7 @@ export default {
       recommandList: [],
       loveList: [],
       bannerList: [],
+      someList: [],
       userId: 52,
       listH: {
         height: ""
@@ -198,17 +208,17 @@ export default {
       headerH: 0,
       NoticeList: [],
       totalNum: "",
-      sliderinit: {
+      options: {
         currentPage: 0,
         thresholdDistance: 500,
         thresholdTime: 100,
-        autoplay: 1000,
+        autoplay: 3000,
         loop: true,
-        direction: "vertical",
-        infinite: 1,
+        direction: "horizontal",
+        loopedSlides: 1,
         slidesToScroll: 1,
         timingFunction: "ease",
-        duration: 300
+        speed: 300
       }
     };
   },
@@ -219,6 +229,7 @@ export default {
     this.getRecommandList();
     this.getLoveList();
     this.getBanner();
+    this.getNotice();
   },
   computed: {},
   methods: {
@@ -289,10 +300,52 @@ export default {
         console.log(res);
         if (res.data.code == 0) {
           that.bannerList = res.data.data;
+          for (var i = 0; i < that.bannerList.length; i++) {
+            that.someList.push({
+              html: "",
+              style: {
+                background: "url(" + that.host + that.bannerList[i].img + ")",
+                "background-size": "100% 100%",
+                "background-position": "center center",
+                "background-repeat": "no-repeat"
+              }
+            });
+          }
+          console.log(that.someList);
         } else if (res.data.code == 400) {
           that.bannerList = [];
         }
       });
+    },
+    // 获取公告
+    getNotice: function() {
+      var that = this;
+         that.axios
+        .post("/api" + that.api.getNoticeList, {
+          userId: that.userId
+        })
+        .then(res => {
+          console.log(res);
+          if (res.data.code == 0) {
+            that.NoticeList = res.data.data;
+            var t = setInterval(myfunc, 2000);
+            var d = document.getElementById("notice-list");
+
+            function myfunc() {
+              var o = d.firstChild;
+              d.removeChild(o);
+              d.appendChild(o);
+            }
+          } else if (res.data.code == 400) {
+            that.NoticeList = [];
+          }
+        });
+   
+     
+      
+    },
+    openProduct:function(id){
+      this.$router.push({path:'/good',params:{id:id}})
     }
   }
 };

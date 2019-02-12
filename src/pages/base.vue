@@ -1,12 +1,12 @@
 <template>
   <div class="frame" id="box">
-    <header class="aui-bar aui-bar-nav" id="header">
+    <!-- <header class="aui-bar aui-bar-nav" id="header">
       <a class="aui-pull-left aui-btn" @click="closewin();">
         <span class="aui-iconfont aui-icon-left"></span>
       </a>
       <div class="aui-title">基本资料</div>
       <div class="amend" tapmode @click="amend">修改</div>
-    </header>
+    </header> -->
     <div class="aui-content-padded">
       <ul class="aui-list-view">
         <li class="aui-list-view-cell list-item aui-flex-col aui-flex-left aui-flex-middle">

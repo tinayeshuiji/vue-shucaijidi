@@ -1,11 +1,11 @@
 <template>
   <div class="collect-box" id="box" v-cloak>
-    <header class="aui-bar aui-bar-nav" id="header">
+    <!-- <header class="aui-bar aui-bar-nav" id="header">
       <a class="aui-pull-left aui-btn" @click="closewin();">
         <span class="aui-iconfont aui-icon-left"></span>
       </a>
       <div class="aui-title">收藏列表</div>
-    </header>
+    </header> -->
     <ul class="aui-flex-row aui-flex-top aui-flex-center cart-list" v-if="collectList.length>0">
       <li
         class="cart-item aui-flex-col aui-flex-between aui-flex-middle"

@@ -1,11 +1,5 @@
 <template>
   <div class="frame" id="box" v-cloak>
-    <header class="aui-bar aui-bar-nav" id="header">
-      <a class="aui-pull-left aui-btn" @click="closewin">
-        <span class="aui-iconfont aui-icon-left"></span>
-      </a>
-      <div class="aui-title">个人设置</div>
-    </header>
     <div class="aui-content-padded">
       <ul class="aui-list-view">
         <li

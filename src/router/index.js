@@ -19,6 +19,7 @@ import Safe from '@/pages/safe'
 import Address from '@/pages/address'
 import AddAddress from '@/pages/address_add'
 import Search from '@/pages/search'
+import Good from '@/pages/good'
 
 Vue.use(Router)
 
@@ -91,33 +92,38 @@ export default new Router({
     },
     {
       path: '/setting',
-      name: 'Setting',
+      name: '个人设置',
       component: Setting
     },
     {
       path: '/base',
-      name: 'Base',
+      name: '基本资料',
       component: Base
     },
     {
       path: '/safe',
-      name: 'Safe',
+      name: '账号与安全',
       component: Safe
     },
     {
       path: '/address',
-      name: 'Address',
+      name: '收货地址',
       component: Address
     },
     {
       path: '/address_add',
-      name: 'AddAddress',
+      name: '新增地址',
       component: AddAddress
     },
     {
       path: '/search',
-      name: 'Search',
+      name: '搜索',
       component: Search
+    },
+    {
+      path: '/good',
+      name: '商品详情',
+      component: Good
     }
   ]
 })

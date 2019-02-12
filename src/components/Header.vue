@@ -50,7 +50,8 @@ export default {
       host: "",
       index: 0,
       userId: 52,
-      title: ""
+      title: "",
+      searchContent:''
     };
   },
   computed: {
@@ -69,24 +70,34 @@ export default {
       let path = to.path;
       // 检索当前路径
       console.log(path);
+      
       if (path == "/home") {
-        
+        this.$store.commit("changeHeaderNav", true);
+        this.$store.commit("changeBottomNav", true);
         this.$store.commit("changeIndex", 0);
       } else if (path == "/cat") {
-    
+        this.$store.commit("changeHeaderNav", true);
+    this.$store.commit("changeBottomNav", true);
         this.$store.commit("changeIndex", 1);
       } else if (path == "/cart") {
-       
+        this.$store.commit("changeHeaderNav", true);
+       this.$store.commit("changeBottomNav", true);
         this.$store.commit("changeIndex", 2);
       } else if (path == "/mine") {
+    this.$store.commit("changeHeaderNav", true);
         this.$store.commit("changeBottomNav", true);
         this.$store.commit("changeIndex", 3);
+      } else if (path == "/search") {
+    this.$store.commit("changeHeaderNav", false);
+        this.$store.commit("changeBottomNav", false);
+        
       } else {
-       
+        this.$store.commit("changeHeaderNav", true);
+        this.$store.commit("changeBottomNav", false);
         this.$store.commit("changeIndex", -1);
         this.title = to.name;
       }
-      this.$store.commit("changeHeaderNav", true);
+      
     },
     navIndex: function(newValue) {
       console.log(newValue);
@@ -268,6 +279,33 @@ header {
 .login-btn {
   width: 15%;
   font-size: 0.6rem;
+  color: #44ca68;
+  text-align: center;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  border-radius: 0.6rem;
+  background-color: #fff;
+}
+
+.search {
+  width: 0.8rem;
+  height: 0.8rem;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.2rem;
+  z-index: 1;
+}
+#header .cancel {
+  font-size: 0.6rem;
+  color: #000;
+  display: block;
+  line-height: 1.25rem;
+  position: absolute;
+  right: 0.5rem;
+}
+.search-txt {
+  width: 15%;
+  font-size: 0.7rem;
   color: #44ca68;
   text-align: center;
   height: 1.25rem;

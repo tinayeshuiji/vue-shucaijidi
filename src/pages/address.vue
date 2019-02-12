@@ -1,12 +1,12 @@
 <template>
   <div class="frame" id="box" v-cloak>
-    <header class="aui-bar aui-bar-nav" id="header">
+    <!-- <header class="aui-bar aui-bar-nav" id="header">
       <a class="aui-pull-left aui-btn" @click="closewin();">
         <span class="aui-iconfont aui-icon-left"></span>
       </a>
       <div class="aui-title">收货地址</div>
       <div class="amend-box" @click="openAddWin">新增地址</div>
-    </header>
+    </header> -->
     <div class="address-list">
       <div class="address-item" v-for="(item,index) in addList" :key="index">
         <div class="address-box" @click="selectAddress(item.id,index)">

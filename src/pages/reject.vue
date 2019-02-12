@@ -1,11 +1,5 @@
 <template>
   <div id="box" v-cloak>
-    <header class="aui-bar aui-bar-nav" id="header">
-      <a class="aui-pull-left aui-btn" @click="closewin">
-        <span class="aui-iconfont aui-icon-left"></span>
-      </a>
-      <div class="aui-title">我的退货</div>
-    </header>
     <div class="aui-content aui-margin-b-15" v-if="orderList.length>0">
       <ul class="aui-list aui-media-list">
         <li class="aui-list-item" v-for="(item,index) in orderList" :key="index">
