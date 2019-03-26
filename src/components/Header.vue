@@ -51,7 +51,7 @@ export default {
       index: 0,
       userId: 52,
       title: "",
-      searchContent:''
+      searchContent: ""
     };
   },
   computed: {
@@ -70,34 +70,32 @@ export default {
       let path = to.path;
       // 检索当前路径
       console.log(path);
-      
+
       if (path == "/home") {
         this.$store.commit("changeHeaderNav", true);
         this.$store.commit("changeBottomNav", true);
         this.$store.commit("changeIndex", 0);
       } else if (path == "/cat") {
         this.$store.commit("changeHeaderNav", true);
-    this.$store.commit("changeBottomNav", true);
+        this.$store.commit("changeBottomNav", true);
         this.$store.commit("changeIndex", 1);
       } else if (path == "/cart") {
         this.$store.commit("changeHeaderNav", true);
-       this.$store.commit("changeBottomNav", true);
+        this.$store.commit("changeBottomNav", true);
         this.$store.commit("changeIndex", 2);
       } else if (path == "/mine") {
-    this.$store.commit("changeHeaderNav", true);
+        this.$store.commit("changeHeaderNav", true);
         this.$store.commit("changeBottomNav", true);
         this.$store.commit("changeIndex", 3);
       } else if (path == "/search") {
-    this.$store.commit("changeHeaderNav", false);
+        this.$store.commit("changeHeaderNav", false);
         this.$store.commit("changeBottomNav", false);
-        
       } else {
         this.$store.commit("changeHeaderNav", true);
         this.$store.commit("changeBottomNav", false);
         this.$store.commit("changeIndex", -1);
         this.title = to.name;
       }
-      
     },
     navIndex: function(newValue) {
       console.log(newValue);

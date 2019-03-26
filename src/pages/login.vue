@@ -57,7 +57,7 @@ export default {
       h: 0,
       pointNone: false,
       ajpush: "",
-      registionId: "123"
+      registionId: "100d85590968ba3a8f2"
     };
   },
   created() {

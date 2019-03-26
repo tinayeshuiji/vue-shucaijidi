@@ -234,13 +234,13 @@ export default {
   computed: {},
   methods: {
     slide(data) {
-      console.log(data);
+      // console.log(data);
     },
     onTap(data) {
-      console.log(data);
+      // console.log(data);
     },
     onInit(data) {
-      console.log(data);
+      // console.log(data);
     },
     // 获取热门列表内容
     getHotList: function() {
